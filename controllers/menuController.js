@@ -29,7 +29,6 @@ class MenuController {
 
 
 
-
     async getAll (req,res,next) {
         const {menu_id} = req.query;
 

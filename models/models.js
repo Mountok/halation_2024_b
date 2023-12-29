@@ -1,6 +1,6 @@
 const sequelize = require("../db");
 
-const { DataTypes, RANGE, DECIMAL } = require("sequelize");
+const { DataTypes, RANGE, DECIMAL, DATE } = require("sequelize");
 
 const User = sequelize.define('user', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
@@ -8,6 +8,7 @@ const User = sequelize.define('user', {
     username: {type: DataTypes.STRING},
     password: {type: DataTypes.STRING},
     role: {type: DataTypes.STRING, defaultValue: "USER"},
+    img: {type: DataTypes.STRING, defaultValue: "userlogo.jpg"}
 })
 
 const Restaurant = sequelize.define('restaurant', {
@@ -23,6 +24,18 @@ const Menu = sequelize.define('menu', {
     title: {type: DataTypes.STRING, allowNull: false},
     price: {type: DataTypes.STRING, allowNull: false},
     img: {type: DataTypes.STRING, allowNull: false},
+})
+
+
+const Armor = sequelize.define('armor', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement:true},
+    time: {type: DataTypes.STRING, allowNull: false},
+    data: {type: DataTypes.STRING, allowNull: false},
+    owner: {type: DataTypes.STRING, allowNull: false},
+    user_id: {type: DataTypes.STRING, allowNull: false},
+    email: {type: DataTypes.STRING, allowNull: false},
+    place_number: {type: DataTypes.STRING, allowNull: false},
+    restaurant: {type: DataTypes.STRING, allowNull: false}
 })
 // const Basket = sequelize.define('basket', {
 //     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
@@ -93,5 +106,6 @@ const Menu = sequelize.define('menu', {
 module.exports = {
     User,
     Restaurant,
-    Menu
+    Menu,
+    Armor
 }

@@ -27,7 +27,17 @@ class RestaurantController {
         
     }
 
-
+    async getOne(req,res,next) {
+        const {id} = req.query;
+        try {
+            const restaurant = await Restaurant.findOne({
+                where: {id: id}
+            })
+            res.json(restaurant)
+        } catch (error) {
+            next(ApiError.badRequest('Не предвиденная ошибка'))
+        }
+    }
 
 
     async getAll (req,res,next) {
